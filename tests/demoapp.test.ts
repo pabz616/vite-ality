@@ -22,46 +22,41 @@ test.for([
     { name: 'Arya Stark', email: 'arya.stark@winterfell.com', age: 18, zodiacSign: 'Sagittarius'},
     { name: 'Cersei Lannister', email: 'cersei.lannister@casterlyrock.com', age: 32, zodiacSign: 'Capricorn'},
     { name: 'Jaime Lannister', email: 'jaime.lannister@casterlyrock.com', age: 30, zodiacSign: 'Taurus'},
-    { name: 'Sansa Stark', email: 'sansa.stark@winterfell.com', age: 22, zodiacSign: 'Virgo'}
+    { name: 'Sansa Stark', email: 'sansa.stark@winterfell.com', age: 22, zodiacSign: 'Virgo'},
+    { name: 'Bran Stark', email: 'bran.stark@winterfell.com', age: 16, zodiacSign: 'Aquarius'},
+    { name: 'Joffrey Baratheon', email: 'joffrey.barantheon@kingsland.com', age: 25, zodiacSign: 'Leo'},
+    { name: 'Petyr Baelish', email: 'littleFinger@vale.com', age: 45, zodiacSign: 'Libra'},
+    { name: 'Tywin Lannister', email: 'tywin.lannister@casterlyrock.com', age: 70, zodiacSign: 'Cancer'},
+    { name: 'Sandor Clegane', email: 'sandor.clegane@kingsland.com', age: 49, zodiacSign: 'Pisces'}
     ])
   ('createUser($name, $email, $age, $zodiacSign) -> $expected', ({ name, email, age, zodiacSign}) => {
     const user = createUser(name, email, age, zodiacSign)
     
     expect(user).toEqual({ name, email, age, zodiacSign })
     expect(user.name).toBe(name)
-    expect(user.name).length.greaterThan(1)
+    expect(user.name).to.have.lengthOf.greaterThan(3)
     expect(user.name).not.toContain('!@#$%^&*()')
     expect(user.name).not.toBeNull()
     expect(user.name).not.toBe(undefined)
     //
     expect(user.email).toBe(email)
-    // expect(user.email).length.greaterThan(1)
+    expect(user.email).toMatch(/@/)
     expect(user.email).not.toContain('!#$%^&*()')
+    expect(user.email).to.have.lengthOf.greaterThan(3)
     expect(user.email).not.toBeNull()
     expect(user.email).not.toBe(undefined)
     //
     expect(user.age).toBe(age)
-    // expect(user.age).length.greaterThan(0)
-    // expect(user.age).length.lessThan(3)
+    expect(user.age.toString()).to.have.lengthOf.greaterThan(1)
     expect(user.age).not.toBeNull()
     expect(user.age).not.toBe(undefined)
-    expect(user.age).toBeGreaterThan(0)
-    expect(user.age).toBeLessThan(150)
+    expect(user.age).toBeGreaterThan(12)
+    expect(user.age).toBeLessThan(100)
     expect(user.age).not.toBeNaN()
     //
     expect(user.zodiacSign).toBe(zodiacSign)
-    // expect(user.zodiacSign).length.greaterThan(1)
+    expect(user.zodiacSign).to.have.lengthOf.greaterThan(2)
     expect(user.email).not.toContain('!#$%^&*()')
     expect(user.email).not.toBeNull()
     expect(user.email).not.toBe(undefined)
   })
-        
-
-
-
-// test('createUser function creates a user object correctly', () => {
-//     const user = createUser('John Doe', 'john.doe@example.com', 30, 'Aries')
-//     expect(user.name).toBe('John Doe')
-//     expect(user.email).toBe('john.doe@example.com')
-//     expect(user.age).toBe(30)
-//     expect(user.zodiacSign).toBe('Aries')
