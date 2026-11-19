@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "types": ["vitest"],
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "module": "node16",
+      "target": "ESNext",
+      "moduleResolution": "node16",
+      "esModuleInterop": true,
+    }
+  }
